@@ -2,6 +2,13 @@
 abstract class Sofa { }
 abstract class CoffeeTable { }
 
+abstract class Factory
+{
+    public abstract Chair CreateChair();
+    public abstract Sofa CreateSofa();
+    public abstract CoffeeTable CreateCoffeeTable();
+}
+
 
 class VictorianChair : Chair
 {
@@ -21,6 +28,19 @@ class VictorianCoffeeTable : CoffeeTable
         => Console.WriteLine(GetType().Name);
 }
 
+class VictorianFactory : Factory
+{
+    public override Chair CreateChair()
+        => new VictorianChair();
+
+    public override Sofa CreateSofa()
+        => new VictorianSofa();
+
+    public override CoffeeTable CreateCoffeeTable()
+        => new VictorianCoffeeTable();
+}
+
+
 
 class ModernChair : Chair
 {
@@ -38,6 +58,19 @@ class ModernCoffeeTable : CoffeeTable
     public ModernCoffeeTable()
         => Console.WriteLine(GetType().Name);
 }
+
+class ModernFactory : Factory
+{
+    public override Chair CreateChair()
+        => new ModernChair();
+
+    public override Sofa CreateSofa()
+        => new ModernSofa();
+
+    public override CoffeeTable CreateCoffeeTable()
+        => new ModernCoffeeTable();
+}
+
 
 
 class ArtDecoChair : Chair
@@ -57,40 +90,6 @@ class ArtDecoCoffeeTable : CoffeeTable
     public ArtDecoCoffeeTable()
         => Console.WriteLine(GetType().Name);
 }
-
-
-
-abstract class Factory
-{
-    public abstract Chair CreateChair();
-    public abstract Sofa CreateSofa();
-    public abstract CoffeeTable CreateCoffeeTable();
-}
-
-class VictorianFactory : Factory
-{
-    public override Chair CreateChair()
-        => new VictorianChair();
-
-    public override Sofa CreateSofa()
-        => new VictorianSofa();
-
-    public override CoffeeTable CreateCoffeeTable()
-        => new VictorianCoffeeTable();
-}
-
-class ModernFactory : Factory
-{
-    public override Chair CreateChair()
-        => new ModernChair();
-
-    public override Sofa CreateSofa()
-        => new ModernSofa();
-
-    public override CoffeeTable CreateCoffeeTable()
-        => new ModernCoffeeTable();
-}
-
 class ArtDecoFactory : Factory
 {
     public override Chair CreateChair()
